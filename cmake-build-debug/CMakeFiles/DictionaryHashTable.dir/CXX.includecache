@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/chrislee/Documents/Junior Year/DSA 2/DictionaryHashTableProj/DictionaryHashTable/hash.h
+vector
+-
+string
+-
+iostream
+-
+
+/Users/chrislee/Documents/Junior Year/DSA 2/DictionaryHashTableProj/DictionaryHashTable/spellcheck.cpp
+fstream
+-
+string
+-
+hash.h
+/Users/chrislee/Documents/Junior Year/DSA 2/DictionaryHashTableProj/DictionaryHashTable/hash.h
+cstdio
+-
+cctype
+-
+algorithm
+-
+iomanip
+-
+
