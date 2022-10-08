@@ -14,9 +14,8 @@ int main(){
     std::string output_file;
     hashTable hashtable(50000);
 
-    time_t start,end; //time function (returns in seconds)
-    int start_time = 0;
-    int end_time =0;
+
+    clock_t start, end; //time function (returns clock ticks in elapsed time)
 
     printf("Input Dictionary File: ");
     std::cin>>input_dictionary;
@@ -34,15 +33,16 @@ int main(){
     std::string line;
     if(dictionary.is_open()){
 
-        start_time = time(&start);
+        start = clock();
         while(!dictionary.eof()){
             dictionary >> line;
             std::transform(line.begin(),line.end(), line.begin(),
                            [](unsigned char c){ return std::tolower(c); }); //turn string to lowercase
             hashtable.insert(line);
         }
-        end_time = time(&end);
-        std::cout<<"Dictionary loading time: " << std::setprecision(4) <<(end_time)-double(start_time)/CLOCKS_PER_SEC<<"seconds"<<std::endl;
+        end = clock();
+
+        std::cout<<"Dictionary loading time: " <<std::fixed<<double(end-start)/double(CLOCKS_PER_SEC)<<std::setprecision(5)<<"seconds"<<std::endl;
     }
     else{
         printf("The dictionary file cannot be opened.\n");
@@ -51,11 +51,11 @@ int main(){
     dictionary.close(); //close dictionary
 
     //spell check
-    start_time = time(&start);
+    start = clock();
     spellcheck(hashtable, input_document, output_file);
-    end_time = time(&end);
+    end = clock();
 
-    std::cout<<"Spellcheck time: "<<  std::setprecision(4) << double(end_time)-double(start_time)/CLOCKS_PER_SEC<<"seconds"<<std::endl;
+    std::cout<<"Spellcheck time: "<< std::fixed<< double(end-start)/ double(CLOCKS_PER_SEC)<< std::setprecision(5) <<"seconds"<<std::endl;
     return 0;
 }
 

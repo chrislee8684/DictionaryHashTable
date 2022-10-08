@@ -22,7 +22,7 @@ public:
     // Returns 0 on success,
     // 1 if key already exists in hash table,
     // 2 if rehash fails.
-    int insert(const std::string &key);
+    int insert(const std::string &key, void *pv = nullptr);
 
     // Check if the specified key is in the hash table.
     // If so, return true; otherwise, return false.
